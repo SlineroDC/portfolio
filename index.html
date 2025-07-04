@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es"> <!-- Sets the language to Spanish -->
+<head>
+    <meta charset="UTF-8"> <!-- Character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive scaling on mobile -->
+    <title>M2S3 Cards Marvel</title> <!-- Page title -->
+    <link rel="stylesheet" href="./estilos.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <!-- Header with title and description -->
+    <header>
+        <h1>Marvel World</h1>
+        <p>My favorite characters from the Marvel universe are:
+            Spiderman, Hulk and Iron Man.
+        </p>
+    </header>
+     <div class="box-empty"></div>
+
+    <!-- Container for all character cards -->
+    <div class="characters">
+        <!-- Spiderman card -->
+        <section class="card">
+            <div class="card__name">
+                <h2 class="card__title">Spiderman</h2> <!-- Character name -->
+            </div>
+
+            <p class="card__text"> 
+                superhero known for his web-slinging abilities and superhuman strength. 
+                He can stick to walls, leap great distances, and has enhanced agility and stamina.
+            </p>
+
+            <!-- Image container (initially hidden by CSS) -->
+            <figure class="card__figure">
+                <img src="./img/spiderman.jpg" alt="Imagen de Spiderman" class="card__img">
+            </figure>
+        </section>
+
+        <!-- Hulk card -->
+        <section class="card card-hulk">
+            <div class="card__name">
+                <h2 class="card__title">Hulk</h2>
+            </div>
+
+            <p class="card__text">
+                The Hulk is a fictional superhero from Marvel Comics and the Marvel Cinematic Universe, 
+                portrayed as a green, giant-sized being with superhuman strength and durability.
+            </p>
+
+            <figure class="card__figure">
+                <img src="./img/HULK.jpg" alt="Imagen de Hulk" class="card__img">
+            </figure>
+        </section>
+
+        <!-- Iron Man card -->
+        <section class="card card-iron">
+            <div class="card__name">
+                <h2 class="card__title">Iron Man</h2>
+            </div>
+
+            <p class="card__text">
+                Iron Man, also known as Tony Stark, is a fictional superhero in the Marvel Comics universe. 
+                He's a brilliant inventor, billionaire, and philanthropist who wears a high-tech, 
+                armored suit to fight crime and protect the world.
+            </p>
+
+            <figure class="card__figure">
+                <img src="/img/iron1.jpg" alt="Imagen de Iron Man" class="card__img">
+            </figure>
+        </section>
+    </div>
+
+    <!-- Empty box for possible spacing or layout use -->
+    <div class="box-empty"></div>
+
+    <!-- Footer with contact info -->
+    <footer>
+        <h2>Thanks for watching</h2>
+        <div class="contact">
+            <a href="mailto:sebastianlinero15@gmail.com" target="_blank">To contact me, click here</a>
+        </div>
+        <p>Created by Sebastian Linero &#x2117; </p>
+    </footer>    
+    <p>
+        (Click on the letter to see images ❤)
+    </p>
+    <!-- JavaScript to toggle 'active' class on card when clicked -->
+    <script>
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('active'); // Adds/removes class to show/hide image
+            });
+        });
+    </script>
+</body>
+</html>
