@@ -7,7 +7,7 @@
     <div
       class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-medium"
     >
-      <p>&copy; {{ new Date().getFullYear() }} SlineroDC. Design by You.</p>
+      <p>&copy; {{ new Date().getFullYear() }} SlineroDC.</p>
 
       <div class="flex items-center gap-6">
         <span class="flex items-center gap-2">

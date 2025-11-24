@@ -1,31 +1,33 @@
-/* Importar fuente Inter desde Google Fonts */
+/* 1. Importar fuente Inter desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-@import "tailwindcss/preflight";
-@import "tailwindcss/utilities";
+/* 2. Directivas de Tailwind (Fundamentales) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Estilos Base - El fondo oscuro profundo */
+/* 3. Estilos Base del Cuerpo */
 body {
     background-color: #050505;
-    /* Un degradado radial sutil para dar profundidad */
     background-image: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #000000 70%);
     color: #e5e5e5;
     font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased; /* Texto nítido en Mac/iOS */
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Capa de Componentes (Buenas prácticas de Tailwind) */
+/* 4. Capa de Componentes Personalizados */
 @layer components {
-    /* Clase reutilizable para cualquier tarjeta de cristal */
+    /* Tarjeta efecto cristal */
     .glass-card {
         @apply bg-glass-surface backdrop-blur-xl border border-glass-border shadow-2xl transition-all duration-500;
     }
 
+    /* Efecto Hover */
     .glass-card:hover {
         @apply bg-[rgba(255,255,255,0.06)] border-[rgba(255,255,255,0.15)] -translate-y-1 shadow-[0_20px_40px_rgba(0,0,0,0.6)];
     }
     
-    /* Clase para el backdrop de los modales */
+    /* Fondo desenfocado para modales */
     .liquid-backdrop {
         background: rgba(0, 0, 0, 0.6);
         backdrop-filter: blur(16px);
