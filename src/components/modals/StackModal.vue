@@ -14,7 +14,7 @@ defineEmits(['close']);
       </button>
       
       <h2 class="text-3xl font-bold text-white mb-2 flex items-center gap-3">
-        <span class="text-emerald-500">🛠️</span> Arsen tecnológico
+        <span class="text-emerald-500">🛠️</span> Tech Stack
       </h2>
       <p class="text-gray-400 mb-8 text-sm">Herramientas que domino y utilizo día a día.</p>
       

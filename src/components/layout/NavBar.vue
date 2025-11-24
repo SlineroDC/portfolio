@@ -28,7 +28,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
           SL
         </div>
         <span class="font-medium tracking-tight text-gray-300 group-hover:text-white transition-colors font-sans">
-          Portfolio SL
+          Portfolio
         </span>
       </div>
 

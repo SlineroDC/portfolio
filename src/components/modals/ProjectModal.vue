@@ -57,10 +57,10 @@ defineEmits(['close']);
 
               <!-- Links -->
               <div class="pt-4 flex gap-4">
-                 <a href="#" class="px-5 py-2.5 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors flex items-center gap-2">
+                 <a href="https://github.com/connect-bq/bq_connect" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors flex items-center gap-2">
                     <Github class="w-4 h-4"/> Repo
                  </a>
-                 <a href="#" class="px-5 py-2.5 border border-white/10 text-white rounded-lg font-medium text-sm hover:bg-white/5 transition-colors flex items-center gap-2">
+                 <a href="https://bq-connect.vercel.app/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 border border-white/10 text-white rounded-lg font-medium text-sm hover:bg-white/5 transition-colors flex items-center gap-2">
                     <ExternalLink class="w-4 h-4"/> Demo
                  </a>
               </div>
@@ -103,8 +103,11 @@ defineEmits(['close']);
               </div>
 
               <div class="pt-4 flex gap-4">
-                 <a href="#" class="px-5 py-2.5 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors flex items-center gap-2">
+                 <a href="https://github.com/WillmanGZ/Bills-Up" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors flex items-center gap-2">
                     <Github class="w-4 h-4"/> Repo
+                 </a>
+                 <a href="https://bills-up.vercel.app/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 border border-white/10 text-white rounded-lg font-medium text-sm hover:bg-white/5 transition-colors flex items-center gap-2">
+                    <ExternalLink class="w-4 h-4"/> Demo
                  </a>
               </div>
            </div>
