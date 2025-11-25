@@ -107,12 +107,12 @@ const emit = defineEmits(['open-projects', 'open-stack', 'open-contact', 'open-b
         <div class="relative flex overflow-hidden w-full opacity-60 group-hover:opacity-100 transition-opacity duration-500">
           <div class="flex animate-marquee whitespace-nowrap gap-12 group-hover:[animation-play-state:paused] items-center px-4">
             <span v-for="n in 2" :key="n" class="flex gap-12 items-center text-lg font-medium text-gray-400">
-              <span class="flex items-center gap-3"><FileCode class="w-5 h-5"/> Vue.js</span>
-              <span class="flex items-center gap-3 text-gray-200"><Cpu class="w-5 h-5"/> .NET Core</span>
-              <span class="flex items-center gap-3"><Database class="w-5 h-5"/> SQL</span>
-              <span class="flex items-center gap-3"><Container class="w-5 h-5"/> Docker</span>
+              <span class="flex items-center gap-3  text-green-700"><FileCode class="w-5 h-5"/> Vue.js</span>
+              <span class="flex items-center gap-3 text-blue-400"><Cpu class="w-5 h-5"/> .NET Core</span>
+              <span class="flex items-center gap-3 text-yellow-400"><Database class="w-5 h-5"/> SQL</span>
+              <span class="flex items-center gap-3 text-blue-700"><Container class="w-5 h-5"/> Docker</span>
               <span class="flex items-center gap-3 text-emerald-500"><Terminal class="w-5 h-5"/> Node.js</span>
-              <span class="flex items-center gap-3"><Layout class="w-5 h-5"/> Tailwind</span>
+              <span class="flex items-center gap-3 text-blue-900"><Layout class="w-5 h-5"/> Tailwind</span>
             </span>
           </div>
         </div>
@@ -171,22 +171,22 @@ const emit = defineEmits(['open-projects', 'open-stack', 'open-contact', 'open-b
     </GlassCard>
 
     <!-- 7. CONTACT (Trigger Contact Modal) -->
-    <GlassCard class="md:col-span-2 p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+    <GlassCard class="md:col-span-2 p-6 flex flex-col md:flex-row items-center justify-between flex-wrap">
       <div class="text-center md:text-left">
         <p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest mb-2">Contacto Directo</p>
         
         <!-- Al hacer clic, abre el modal de contacto -->
-        <button @click="emit('open-contact')" class="text-lg font-medium text-white hover:text-emerald-400 transition-colors flex items-center gap-2 font-mono group">
+        <button @click="emit('open-contact')" class="text-lg font-medium text-white hover:text-emerald-400 transition-colors flex items-center gap-2 font-mono group min-w-0">
           <Mail class="w-4 h-4" /> sebastianlinero15@gmail.com
           <ArrowUpRight class="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1" />
         </button>
       </div>
       
-      <div class="flex gap-4">
-        <a href="https://linkedin.com/in/slinerodc" target="_blank" class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:scale-110 transition-all text-gray-300 hover:text-white group">
+      <div class="flex gap-2 gap-4 mt-4 md:mt-0 flex-shrink-0">
+        <a href="https://linkedin.com/in/slinerodc" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:scale-110 transition-all text-gray-300 hover:text-white group">
           <Linkedin class="w-5 h-5 group-hover:text-[#0077b5] transition-colors" />
         </a>
-        <a href="https://github.com/slinerodc" target="_blank" class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:scale-110 transition-all text-gray-300 hover:text-white group">
+        <a href="https://github.com/slinerodc" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:scale-110 transition-all text-gray-300 hover:text-white group">
           <Github class="w-5 h-5 group-hover:text-white transition-colors" />
         </a>
         
