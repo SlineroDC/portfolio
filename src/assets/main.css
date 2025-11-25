@@ -1,0 +1,35 @@
+/* 1. Importar fuente Inter desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* 2. Directivas de Tailwind (Fundamentales) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3. Estilos Base del Cuerpo */
+body {
+    background-color: #050505;
+    background-image: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #000000 70%);
+    color: #e5e5e5;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 4. Capa de Componentes Personalizados */
+@layer components {
+    /* Tarjeta efecto cristal */
+    .glass-card {
+        @apply bg-glass-surface backdrop-blur-xl border border-glass-border shadow-2xl transition-all duration-500;
+    }
+
+    /* Efecto Hover */
+    .glass-card:hover {
+        @apply bg-[rgba(255,255,255,0.06)] border-[rgba(255,255,255,0.15)] -translate-y-1 shadow-[0_20px_40px_rgba(0,0,0,0.6)];
+    }
+    
+    /* Fondo desenfocado para modales */
+    .liquid-backdrop {
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(16px);
+    }
+}
