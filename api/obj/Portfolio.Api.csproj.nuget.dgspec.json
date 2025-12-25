@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/Coder/Documentos/Slinero/portfolio/api/Portfolio.Api.csproj": {}
+    "D:\\Users\\windows 10\\Documents\\portfolio\\api\\Portfolio.Api.csproj": {}
   },
   "projects": {
-    "/home/Coder/Documentos/Slinero/portfolio/api/Portfolio.Api.csproj": {
+    "D:\\Users\\windows 10\\Documents\\portfolio\\api\\Portfolio.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/Coder/Documentos/Slinero/portfolio/api/Portfolio.Api.csproj",
+        "projectUniqueName": "D:\\Users\\windows 10\\Documents\\portfolio\\api\\Portfolio.Api.csproj",
         "projectName": "Portfolio.Api",
-        "projectPath": "/home/Coder/Documentos/Slinero/portfolio/api/Portfolio.Api.csproj",
-        "packagesPath": "/home/Coder/.nuget/packages/",
-        "outputPath": "/home/Coder/Documentos/Slinero/portfolio/api/obj/",
+        "projectPath": "D:\\Users\\windows 10\\Documents\\portfolio\\api\\Portfolio.Api.csproj",
+        "packagesPath": "C:\\Users\\windows 10\\.nuget\\packages\\",
+        "outputPath": "D:\\Users\\windows 10\\Documents\\portfolio\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/Coder/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\windows 10\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[3.0.2, )"
             },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.14.1, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[10.0.0, )"
@@ -55,6 +59,10 @@
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[10.0.1, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.14.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -80,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/Coder/.dotnet/sdk/10.0.100/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
