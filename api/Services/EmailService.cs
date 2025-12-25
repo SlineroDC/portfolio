@@ -29,7 +29,7 @@ public class EmailService(IConfiguration config)
             var builder = new BodyBuilder
             {
                 // Usamos TextBody para un formato simple y limpio
-                TextBody = $"Nombre: {form.Name}\nEmail: {form.Email}\n\nMensaje:\n{form.Message}"
+                TextBody = $"Nombre: {form.Name}\nEmail: {form.Email}\n\nMensaje:\n{form.Message}",
             };
             message.Body = builder.ToMessageBody();
 
@@ -44,10 +44,7 @@ public class EmailService(IConfiguration config)
             );
 
             // Autenticarse con las credenciales (Correo y Contraseña de Aplicación)
-            await client.AuthenticateAsync(
-                smtpSettings["Username"],
-                smtpSettings["Password"]
-            );
+            await client.AuthenticateAsync(smtpSettings["Username"], smtpSettings["Password"]);
 
             // Enviar el mensaje
             await client.SendAsync(message);
