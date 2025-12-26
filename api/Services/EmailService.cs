@@ -1,4 +1,5 @@
 using MailKit.Net.Smtp;
+using MailKit.Security;
 using MimeKit;
 using Portfolio.Api.Models;
 
@@ -10,55 +11,58 @@ public class EmailService(IConfiguration config)
     {
         try
         {
-            // 1. Obtener la configuración desde las variables de entorno (Railway)
+            // Cargar configuración desde las variables de entorno (Railway)
             var smtpSettings = config.GetSection("Smtp");
 
-            // 2. Crear el objeto del mensaje (MimeMessage)
+            // Crear el objeto del mensaje
             var message = new MimeMessage();
 
-            // Configurar el remitente (Debe coincidir con la variable Smtp__FromEmail)
+            // Configurar Remitente (Debe coincidir con tu variable Smtp__FromEmail)
             message.From.Add(new MailboxAddress("Portafolio Bot", smtpSettings["FromEmail"]));
 
-            // Configurar el destinatario (Te lo envías a ti mismo)
+            // Configurar Destinatario (Te envías el correo a ti mismo)
             message.To.Add(new MailboxAddress("Sebastian Linero", smtpSettings["FromEmail"]));
 
-            // Configurar el asunto
             message.Subject = $"Nuevo mensaje de: {form.Name}";
 
-            // 3. Construir el cuerpo del correo
+            // Construir el cuerpo del correo en texto plano
             var builder = new BodyBuilder
             {
-                // Usamos TextBody para un formato simple y limpio
                 TextBody = $"Nombre: {form.Name}\nEmail: {form.Email}\n\nMensaje:\n{form.Message}",
             };
             message.Body = builder.ToMessageBody();
 
-            // 4. Iniciar el cliente SMTP (MailKit)
+            // Iniciar cliente SMTP
             using var client = new SmtpClient();
 
-            // Conectar al servidor (Gmail usa puerto 587 con cifrado StartTls)
+            // Configurar un tiempo de espera máximo de 10 segundos
+            // Esto evita que la página se quede "Cargando..." infinitamente si el servidor no responde
+            client.Timeout = 10000;
+
+            // Conectar al servidor
+            // 'Auto' permite que funcione tanto con puerto 587 (StartTLS) como 465 (SSL Implícito)
             await client.ConnectAsync(
                 smtpSettings["Host"],
                 int.Parse(smtpSettings["Port"]!),
-                MailKit.Security.SecureSocketOptions.StartTls
+                SecureSocketOptions.Auto
             );
 
-            // Autenticarse con las credenciales (Correo y Contraseña de Aplicación)
+            // Autenticar con usuario y contraseña de aplicación
             await client.AuthenticateAsync(smtpSettings["Username"], smtpSettings["Password"]);
 
             // Enviar el mensaje
             await client.SendAsync(message);
 
-            // Desconectar limpiamente cerrando la sesión
+            // Cerrar conexión limpiamente
             await client.DisconnectAsync(true);
 
-            return true; // Envío exitoso
+            return true;
         }
         catch (Exception ex)
         {
-            // Registrar el error en la consola para depuración en los logs
+            // Imprimir el error exacto en los logs de Railway para depuración
             Console.WriteLine($"Error enviando correo: {ex.Message}");
-            return false; // Envío fallido
+            return false;
         }
     }
 }
