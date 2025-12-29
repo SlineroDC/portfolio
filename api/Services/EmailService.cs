@@ -25,8 +25,6 @@ public class EmailService(IConfiguration config)
             }
 
             // 2. Construir el cuerpo de la petición (JSON)
-            // Resend permite enviar desde 'onboarding@resend.dev' si no tienes dominio propio.
-            // Esto asegura que el correo SIEMPRE llegue y no caiga en spam.
             var emailData = new
             {
                 from = "Portafolio Bot <onboarding@resend.dev>",
@@ -40,7 +38,7 @@ public class EmailService(IConfiguration config)
                     <p><strong>Mensaje:</strong></p>
                     <p>{form.Message}</p>
                 ",
-                reply_to = form.Email, // Esto permite que si le das "Responder" en Gmail, le respondas a la persona.
+                reply_to = form.Email,
             };
 
             // 3. Preparar la petición HTTP

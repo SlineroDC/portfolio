@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "lucide-vue-next": "^0.554.0",
-    "vue": "^3.5.22"
+    "vue": "^3.5.22",
+    "vue-sonner": "^2.0.9"
   },
   "devDependencies": {
     "@eslint/js": "^9.37.0",

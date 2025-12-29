@@ -1,8 +1,11 @@
 import { createApp } from 'vue'
 
-// Importamos TU archivo CSS (que carga Tailwind dentro)
 import './assets/main.css'
 
 import App from './App.vue'
 
-createApp(App).mount('#app')
+import { Toaster} from 'vue-sonner'
+
+const app = createApp(App)
+app.component('ToasterComponent', Toaster)
+app.mount('#app')
