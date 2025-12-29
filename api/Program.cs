@@ -47,7 +47,6 @@ using (var scope = app.Services.CreateScope())
 
 app.UseCors("AllowVue");
 
-// Opcional: En producción a veces quieres Swagger, a veces no. 
 // Para portafolio déjalo activado para que puedas probarlo online.
 app.UseSwagger();
 app.UseSwaggerUI();
@@ -66,7 +65,6 @@ app.MapPost("/api/status/activate/{id}", async (int id, StatusService service, I
     // OJO: En Railway la variable se llamará AdminKeys__StatusUpdate (con doble guion bajo)
     // o simplemente definimos la key directamente
     var serverKey = config["AdminKeys:StatusUpdate"] ?? Environment.GetEnvironmentVariable("ADMIN_KEY");
-    
     var reqKey = req.Headers["X-ADMIN-KEY"];
     if (reqKey != serverKey) return Results.Unauthorized();
 
