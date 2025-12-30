@@ -1,102 +1,90 @@
 <script setup>
 import { computed } from 'vue';
 
-// Recibimos la lista de tu API (.NET devuelve "vue", "csharp", "sql", etc.)
 const props = defineProps({
   techStack: { type: Array, default: () => [] }
 });
 
-// Función para obtener la ruta de la imagen en public/icons
-// Ejemplo: si llega "csharp" -> devuelve "/icons/csharp.svg"
-const getIconPath = (iconName) => {
-  // Manejo de casos especiales por si el nombre en la API no coincide exacto con el archivo
-  const fileMap = {
-    'csharp': 'csharp.svg',
-    'dotnet': 'dotnet.svg',
-    'vue': 'vue.svg',
-    'tailwind': 'tailwind.svg',
-    'javascript': 'javascript.svg',
-    'html': 'html.svg',
-    'mongo': 'mongo.svg',
-    'mysql': 'mysql.svg',
-    'node': 'node.svg',
-    'python': 'python.svg',
-    'sql': 'sql.svg',
-    'docker': 'docker.svg',
-    'git': 'git.svg',
-    'github': 'github.svg'
-  };
+const getIconPath = (iconName) => `/icons/${iconName}.svg`;
 
-  const fileName = fileMap[iconName] || 'code.svg'; // Icono por defecto si falla
-  return `/icons/${fileName}`;
-};
+const defaultStack = [
+  { name: "Vue.js", icon: "vue" },
+  { name: ".NET", icon: "dotnet" },
+  { name: "C#", icon: "csharp" },
+  { name: "MySQL", icon: "mysql" },
+  { name: "Docker", icon: "docker" },
+  { name: "Tailwind", icon: "tailwind" },
+  { name: "Git", icon: "git" },
+  { name: "Node.js", icon: "node" },
+  { name: "Python", icon: "python" },
+  { name: "MongoDB", icon: "mongo" }
+];
 
-// Stack por defecto para mostrar algo si la API tarda en cargar
 const displayStack = computed(() => {
-  return props.techStack.length > 0 ? props.techStack : [
-    { name: "Vue.js", icon: "vue" },
-    { name: ".NET", icon: "dotnet" },
-    { name: "C#", icon: "csharp" },
-    { name: "SQL", icon: "sql" },
-    { name: "Docker", icon: "docker" },
-    { name: "Tailwind", icon: "tailwind" }
-  ];
+  return props.techStack.length > 0 ? props.techStack : defaultStack;
 });
 </script>
 
 <template>
-  <div class="relative flex overflow-x-hidden group select-none py-6">
+  <div class="max-w-6xl mx-auto my-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden relative">
 
-    <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10"></div>
-    <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10"></div>
+    <div class="py-8 relative flex overflow-x-hidden group">
 
-    <div class="animate-marquee whitespace-nowrap flex items-center">
-      <div
-        v-for="(tech, i) in displayStack"
-        :key="i"
-        class="mx-12 flex flex-col items-center gap-4 group/item cursor-default"
-      >
-        <div class="w-16 h-16 relative flex items-center justify-center transition-transform duration-300 group-hover/item:scale-110 group-hover/item:drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-            <img
-              :src="getIconPath(tech.icon)"
-              :alt="tech.name"
-              class="w-full h-full object-contain filter grayscale opacity-60 group-hover/item:grayscale-0 group-hover/item:opacity-100 transition-all duration-500"
-            />
+      <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#050505] via-[#050505]/80 to-transparent z-10"></div>
+      <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#050505] via-[#050505]/80 to-transparent z-10"></div>
+
+      <div class="animate-marquee whitespace-nowrap flex items-center">
+        <div
+          v-for="(tech, i) in displayStack"
+          :key="i"
+          class="mx-8 flex flex-col items-center gap-4 group/item cursor-default"
+        >
+          <div class="w-12 h-12 relative flex items-center justify-center transition-transform duration-300 group-hover/item:scale-110">
+              <img
+                :src="getIconPath(tech.icon)"
+                :alt="tech.name"
+                class="w-full h-full object-contain drop-shadow-lg filter grayscale opacity-50 group-hover/item:grayscale-0 group-hover/item:opacity-100 transition-all duration-300"
+              />
+          </div>
+
+          <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest group-hover/item:text-white transition-colors">
+              {{ tech.name }}
+          </span>
         </div>
-
-        <span class="text-sm font-bold text-gray-600 uppercase tracking-widest group-hover/item:text-white transition-colors">
-            {{ tech.name }}
-        </span>
       </div>
-    </div>
 
-    <div class="absolute top-0 py-6 animate-marquee2 whitespace-nowrap flex items-center">
-      <div
-        v-for="(tech, i) in displayStack"
-        :key="i + 'dup'"
-        class="mx-12 flex flex-col items-center gap-4 group/item cursor-default"
-      >
-         <div class="w-16 h-16 relative flex items-center justify-center transition-transform duration-300 group-hover/item:scale-110 group-hover/item:drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-            <img
-              :src="getIconPath(tech.icon)"
-              :alt="tech.name"
-              class="w-full h-full object-contain filter grayscale opacity-60 group-hover/item:grayscale-0 group-hover/item:opacity-100 transition-all duration-500"
-            />
+      <div class="absolute top-0 py-8 animate-marquee2 whitespace-nowrap flex items-center">
+        <div
+          v-for="(tech, i) in displayStack"
+          :key="i + 'dup'"
+          class="mx-8 flex flex-col items-center gap-4 group/item cursor-default"
+        >
+           <div class="w-12 h-12 relative flex items-center justify-center transition-transform duration-300 group-hover/item:scale-110">
+              <img
+                :src="getIconPath(tech.icon)"
+                :alt="tech.name"
+                class="w-full h-full object-contain drop-shadow-lg filter grayscale opacity-50 group-hover/item:grayscale-0 group-hover/item:opacity-100 transition-all duration-300"
+              />
+          </div>
+
+          <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest group-hover/item:text-white transition-colors">
+              {{ tech.name }}
+          </span>
         </div>
-
-        <span class="text-sm font-bold text-gray-600 uppercase tracking-widest group-hover/item:text-white transition-colors">
-            {{ tech.name }}
-        </span>
       </div>
-    </div>
 
+    </div>
   </div>
 </template>
 
 <style scoped>
-/* Duración ajustada a 40s para que sea un paseo suave */
 .animate-marquee { animation: marquee 40s linear infinite; }
 .animate-marquee2 { animation: marquee2 40s linear infinite; }
+
+.group:hover .animate-marquee,
+.group:hover .animate-marquee2 {
+    animation-play-state: paused;
+}
 
 @keyframes marquee {
   0% { transform: translateX(0%); }

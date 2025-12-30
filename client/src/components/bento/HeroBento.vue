@@ -12,7 +12,7 @@ const props = defineProps({
 
 const emit = defineEmits(['open-contact', 'open-bio']);
 
-// --- LÓGICA DE STATUS (Reciclada de tu BentoGrid) ---
+// --- LÓGICA DE STATUS---
 const iconMap = {
   'code': Terminal, 'dumbbell': Dumbbell, 'flag': Flag, 'burger': Utensils,
   'mic': Mic, 'moon': Moon, 'briefcase': Briefcase, 'coffee': Coffee, 'default': Activity
@@ -53,7 +53,7 @@ const currentStyle = computed(() => colorMap[props.apiStatus.color] || colorMap.
         </h1>
 
         <p class="text-gray-400 text-lg leading-relaxed font-light max-w-md">
-          De la <strong>Logística</strong> al <strong>Desarrollo Full Stack</strong>.
+          De la <strong>Contabilidad</strong> al <strong>Desarrollo Full Stack</strong>.
           Transformo procesos complejos en arquitecturas de software robustas con .NET y Vue.
         </p>
 

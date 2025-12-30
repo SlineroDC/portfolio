@@ -8,7 +8,7 @@ import NavBar from './components/layout/NavBar.vue';
 import AppFooter from './components/layout/AppFooter.vue';
 
 // --- SECCIONES (SCROLLING) ---
-import HeroBento from './components/sections/HeroBento.vue';
+import HeroBento from './components/bento/HeroBento.vue';
 import StackMarquee from './components/sections/StackMarquee.vue';
 import ProjectsSection from './components/sections/ProjectsSection.vue';
 import AboutSection from './components/sections/AboutSection.vue';
@@ -86,7 +86,7 @@ onUnmounted(() => {
         <HeroBento :apiStatus="apiStatus" @open-bio="scrollToSection('#about')" />
       </section>
 
-      <section id="stack" class="py-10 border-y border-white/5 bg-black/20 backdrop-blur-md overflow-hidden">
+      <section id="stack" class="py-4 border-y border-white/5 bg-black/20 backdrop-blur-md overflow-hidden">
         <StackMarquee :techStack="techStack" />
       </section>
 
@@ -98,7 +98,7 @@ onUnmounted(() => {
         <AboutSection />
       </section>
 
-      <section id="contact" class="py-32 px-4 max-w-xl mx-auto">
+      <section id="contact" class="py-32 px-4 max-w-5xl mx-auto">
         <ContactSection />
       </section>
 

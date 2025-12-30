@@ -1,13 +1,13 @@
 <script setup>
 import { GraduationCap, Briefcase, Code2, Award } from 'lucide-vue-next';
 
-// Datos de tu historia (Puedes editarlos luego)
+// Datos de tu historia
 const timeline = [
   {
     year: "2024 - Presente",
-    title: "Full Stack Developer",
+    title: "Full Stack Developer Jr.",
     company: "Freelance / Proyectos Propios",
-    desc: "Desarrollo de arquitecturas escalables con .NET 8 y Vue 3. Creación de soluciones SaaS y optimización de bases de datos.",
+    desc: "Desarrollo de arquitecturas escalables con .NET 10 y Vue 3. Creación de soluciones SaaS y optimización de bases de datos.",
     icon: Code2,
     color: "text-emerald-400",
     bg: "bg-emerald-500/10 border-emerald-500/20"
@@ -15,17 +15,17 @@ const timeline = [
   {
     year: "2023",
     title: "Transición Tecnológica",
-    company: "Formación Intensiva",
-    desc: "Decidí pivotar mi carrera. Aprendizaje profundo de C#, SQL Server y Arquitectura de Software. Construcción de proyectos MVP como 'Connect BQ'.",
+    company: "Riwi Io",
+    desc: "Decidí pivotar mi carrera al Desarrollo de Software con Riwi. Aprendizaje profundo de C#, Vue js, Express js, SQL y Arquitectura de Software. Construcción de proyectos MVP como 'Connect BQ'.",
     icon: GraduationCap,
     color: "text-blue-400",
     bg: "bg-blue-500/10 border-blue-500/20"
   },
   {
     year: "2020 - 2023",
-    title: "Coordinador Logístico & Contable",
-    company: "Sector Logística",
-    desc: "Gestión de inventarios, optimización de rutas y análisis de costos. Aquí nació mi obsesión por la eficiencia y la automatización de procesos.",
+    title: "Auxiliar Contable",
+    company: "Soluciones Ambientales de Colombia S.A.S",
+    desc: "Gestión de inventarios, ordenes de compra, nomina y análisis de costos. Aquí nació mi obsesión por la eficiencia y la automatización de procesos.",
     icon: Briefcase,
     color: "text-purple-400",
     bg: "bg-purple-500/10 border-purple-500/20"
@@ -34,9 +34,9 @@ const timeline = [
 </script>
 
 <template>
-  <div class="grid md:grid-cols-2 gap-16 items-start">
+  <div class="grid md:grid-cols-2 gap-x-16 gap-y-12 items-start">
 
-    <div class="space-y-8 sticky top-32" v-motion-slide-visible-once>
+    <div class="space-y-8 md:sticky md:top-32" v-motion-slide-visible-once>
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-emerald-400">
         <Award class="w-3 h-3" />
         <span>Mi Historia</span>
@@ -49,7 +49,7 @@ const timeline = [
 
       <div class="space-y-6 text-lg text-gray-400 font-light leading-relaxed">
         <p>
-          Mi viaje no empezó en una terminal, sino en almacenes y hojas de cálculo. Durante años, optimicé cadenas de suministro y balances contables.
+          Mi viaje no empezó en una terminal, sino en almacenes y hojas de cálculo. Durante años, balances contables y procesos de nómina.
         </p>
         <p>
           Un día me di cuenta de que las herramientas que usábamos podían ser mejores. <strong class="text-white font-medium">Así que decidí construirlas yo mismo.</strong>
@@ -62,7 +62,7 @@ const timeline = [
       <div class="grid grid-cols-3 gap-4 pt-4">
         <div class="p-4 rounded-2xl bg-white/5 border border-white/10 text-center">
             <div class="text-2xl font-bold text-white">+3</div>
-            <div class="text-xs text-gray-500 uppercase">Años Exp. Laboral</div>
+            <div class="text-xs text-gray-500 uppercase">Años Exp. Laboral </div>
         </div>
         <div class="p-4 rounded-2xl bg-white/5 border border-white/10 text-center">
             <div class="text-2xl font-bold text-emerald-400">100%</div>
