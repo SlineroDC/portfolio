@@ -22,7 +22,7 @@ builder.Services.AddCors(opt =>
 builder.Services.AddScoped<StatusService>();
 builder.Services.AddScoped<EmailService>();
 builder.Services.AddScoped<StackService>();
-builder.Services.AddScoped<RoadmapService>(); 
+builder.Services.AddScoped<RoadmapService>();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
@@ -44,6 +44,7 @@ using (var scope = app.Services.CreateScope())
     }
 
     db.Database.EnsureCreated(); // Crea la DB y Tablas si no existen
+
     // Seed Data para RoadmapItems si está vacío
     if (!db.RoadmapItems.Any())
     {
@@ -96,8 +97,10 @@ app.MapPost(
         var serverKey =
             config["AdminKeys:StatusUpdate"] ?? Environment.GetEnvironmentVariable("ADMIN_KEY");
         var reqKey = req.Headers["X-ADMIN-KEY"];
+
         if (reqKey != serverKey)
             return Results.Unauthorized();
+
         return await service.SetManualStatusAsync(id) ? Results.Ok("Activado") : Results.NotFound();
     }
 );
@@ -113,9 +116,11 @@ app.MapPost(
 );
 
 // === GRUPO 3: TECH STACK ===
+
 app.MapGet("/api/stack", (StackService service) => Results.Ok(service.GetStack()));
 
 // === GRUPO 4: ROADMAP (KANBAN) ===
+
 app.MapGet(
     "/api/roadmap",
     async (RoadmapService service) => Results.Ok(await service.GetAllAsync())
@@ -123,8 +128,15 @@ app.MapGet(
 
 app.MapPost(
     "/api/roadmap",
-    async (RoadmapItem item, RoadmapService service) =>
+    async (RoadmapItem item, RoadmapService service, IConfiguration config, HttpRequest req) =>
     {
+        var serverKey =
+            config["AdminKeys:StatusUpdate"] ?? Environment.GetEnvironmentVariable("ADMIN_KEY");
+        var reqKey = req.Headers["X-ADMIN-KEY"];
+
+        if (reqKey != serverKey)
+            return Results.Unauthorized();
+
         var created = await service.AddAsync(item);
         return Results.Created($"/api/roadmap/{created.Id}", created);
     }
@@ -132,8 +144,17 @@ app.MapPost(
 
 app.MapDelete(
     "/api/roadmap/{id}",
-    async (int id, RoadmapService service) =>
-        await service.DeleteAsync(id) ? Results.NoContent() : Results.NotFound()
+    async (int id, RoadmapService service, IConfiguration config, HttpRequest req) =>
+    {
+        var serverKey =
+            config["AdminKeys:StatusUpdate"] ?? Environment.GetEnvironmentVariable("ADMIN_KEY");
+        var reqKey = req.Headers["X-ADMIN-KEY"];
+
+        if (reqKey != serverKey)
+            return Results.Unauthorized();
+
+        return await service.DeleteAsync(id) ? Results.NoContent() : Results.NotFound();
+    }
 );
 
 app.Run();
