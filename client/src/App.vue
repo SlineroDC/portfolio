@@ -3,28 +3,29 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import Lenis from 'lenis';
 import { ArrowUp } from 'lucide-vue-next';
 
-// --- LAYOUT ---
+// --- 1. IMPORTACIÓN DE COMPONENTES DE LAYOUT ---
 import NavBar from './components/layout/NavBar.vue';
 import AppFooter from './components/layout/AppFooter.vue';
 
-// --- SECCIONES ---
+// --- 2. IMPORTACIÓN DE SECCIONES ---
 import HeroBento from './components/sections/HeroBento.vue';
 import StackMarquee from './components/sections/StackMarquee.vue';
 import ProjectsSection from './components/sections/ProjectsSection.vue';
 import AboutSection from './components/sections/AboutSection.vue';
 import ContactSection from './components/sections/ContactSection.vue';
+import RoadmapSection from './components/sections/RoadmapSection.vue'; 
 
-// Variables y Estados
+// --- VARIABLES Y ESTADOS ---
 const API_URL = import.meta.env.VITE_API_URL;
 const showBackToTop = ref(false);
-const isLoading = ref(true); // Estado para la intro
+const isLoading = ref(true);
 const apiStatus = ref({ activity: "Cargando...", message: "Conectando...", color: "gray", icon: "loader" });
 const techStack = ref([]);
 
 let intervalId = null;
 let lenis = null;
 
-// --- API ---
+// --- FUNCIONES API (Backend communication) ---
 const fetchStatus = async () => {
   try {
     const response = await fetch(`${API_URL}/api/status`);
@@ -42,23 +43,23 @@ const fetchStack = async () => {
   } catch (e) { console.error("Error API Stack", e); }
 };
 
-// --- SCROLL ---
+// --- CONFIGURACIÓN DE SCROLL SUAVE (LENIS) ---
 const scrollToTop = () => lenis?.scrollTo(0, { duration: 2 });
 const scrollToSection = (id) => lenis?.scrollTo(id, { offset: -80, duration: 1.5 });
 
-// --- LIFECYCLE ---
+// --- CICLO DE VIDA (LIFECYCLE) ---
 onMounted(() => {
-  // 1. INTRO ANIMATION
+  // 1. Simulación de carga inicial (Intro): 2 segundos
   setTimeout(() => {
     isLoading.value = false;
   }, 2000);
 
-  // 2. Cargas de datos
+  // 2. Ejecución de llamadas a la API
   fetchStatus();
   fetchStack();
   intervalId = setInterval(fetchStatus, 60000);
 
-  // 3. Inicializar Scroll Suave
+  // 3. Inicialización de Lenis (Scroll suave)
   lenis = new Lenis({ duration: 1.2, smoothWheel: true });
   function raf(time) {
     lenis.raf(time);
@@ -66,7 +67,7 @@ onMounted(() => {
   }
   requestAnimationFrame(raf);
 
-  // 4. Mostrar botón de subir
+  // 4. Listener para mostrar/ocultar botón "Volver arriba"
   window.addEventListener('scroll', () => {
     showBackToTop.value = window.scrollY > 500;
   });
@@ -118,6 +119,10 @@ onUnmounted(() => {
         <AboutSection />
       </section>
 
+      <section id="roadmap" class="py-32 px-4 max-w-7xl mx-auto">
+        <RoadmapSection />
+      </section>
+
       <section id="contact" class="py-32 px-4 max-w-5xl mx-auto">
         <ContactSection />
       </section>
@@ -148,17 +153,19 @@ onUnmounted(() => {
 </template>
 
 <style>
-/* Estilos para Lenis */
+/* --- CONFIGURACIÓN GLOBAL CSS --- */
+
+/* Lenis Scroll Smooth */
 html.lenis { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
 
-/* Transiciones Genéricas */
+/* Transiciones Genéricas (Fade In/Out estándar) */
 .fade-enter-active, .fade-leave-active { transition: opacity 0.3s ease; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }
 
-/* Transición Especial para la Intro */
+/* Transición Específica para la Intro */
 .intro-fade-leave-active { transition: opacity 1.5s ease-in-out; }
 .intro-fade-leave-to { opacity: 0; }
 </style>

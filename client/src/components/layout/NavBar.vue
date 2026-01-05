@@ -9,10 +9,11 @@ const isMobileMenuOpen = ref(false);
 const isScrolled = ref(false);
 
 const navItems = [
-  { label: 'Inicio', id: '#home' },   // Agregué el # para ser explícito
+  { label: 'Inicio', id: '#home' },
   { label: 'Stack', id: '#stack' },
   { label: 'Proyectos', id: '#projects' },
   { label: 'Sobre Mí', id: '#about' },
+  { label: 'Roadmap', id: '#roadmap' }, 
 ];
 
 const handleScroll = () => {
