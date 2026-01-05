@@ -1,0 +1,27 @@
+## --- BUILD & RESULTADOS (Basura que se genera sola) ---
+[Bb]in/
+[Oo]bj/
+
+## --- IDE & EDITOR (Configuraciones de tu PC) ---
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userprefs
+
+## --- SECRETOS & CONFIGURACIÓN LOCAL (¡IMPORTANTE!) ---
+appsettings.Development.json
+.env
+.secret
+
+## --- BASE DE DATOS (SQLite) ---
+# No queremos subir la DB real con tus datos, 
+# solo queremos que se cree sola con las migraciones.
+*.db
+*.db-shm
+*.db-wal
+
+## --- LOGS & OTROS ---
+*.log
+[Tt]est[Rr]esult*/
