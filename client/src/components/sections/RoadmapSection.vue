@@ -86,7 +86,11 @@ onMounted(() => fetchRoadmap());
                <StatusBadge :color="getBadgeColor(item.priority)">
                  {{ item.priority }}
                </StatusBadge>
-               <Cpu class="w-4 h-4 text-gray-600 group-hover/card:text-white transition-colors" />
+
+               <div class="flex items-center gap-2 opacity-50 group-hover/card:opacity-100 transition-opacity">
+                 <span class="text-xs font-mono text-gray-500 font-bold">#{{ item.id }}</span>
+                 <Cpu class="w-4 h-4 text-gray-600 group-hover/card:text-white transition-colors" />
+               </div>
             </div>
 
             <h4 class="font-medium text-gray-200 text-sm">{{ item.title }}</h4>
